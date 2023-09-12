@@ -15,6 +15,16 @@ app.get('/getRandomMeal', (req, res) => {
   res.send('https://www.themealdb.com/api/json/v1/1/random.php');
 });
 
+// Get Cocktail Random Auto Choice
+app.get('/getRandomMeal', (req, res) => {
+  res.send('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+});
+
+// GET Global API Results On serveless netlify
+app.get('/isAlive', (req, res) => {
+  res.json({ isAlive: "true"});
+});
+
 // GET Where
 app.get('/place', (req, res) => {
   res.json({'places':['AtHome','In restaurante','In Car','Somewhere','In Sofa','In the street','In park']});
@@ -22,7 +32,7 @@ app.get('/place', (req, res) => {
 
 // GET What to do
 app.get('/activity', (req, res) => {
-  res.json({ 'activity':['Walk','Movie','Chat in the balcony','Play a game','Talk about a book','Drink wine','Dinner with Friends','Go Camping/ PicNic','Explore a new place','Cinema','Theater',]});
+  res.json({ 'activity':['Walk','Movie','Chat in the balcony','Play a game','Talk about a book','Drink wine','Dinner with Friends','Go Camping/ PicNic','Explore a new place','Cinema','Theater']});
 });
 
 // GET Sexy Positions
@@ -31,6 +41,6 @@ app.get('/sexytime', (req, res) => {
 });
 
 // GET Style entertainment 
-app.get('/entertainment ', (req, res) => {
-  res.json({'entertainment': ['Drama','Action','Franch','Family','MOST Viewed','In Cinema','The first come up on mind','Comedie']});
+app.get('/entertainment', (req, res) => {
+  res.json({'entertainment': ['Drama','Action','Franch','Family','MOST Viewed','In Cinema','The first come up on mind','Comedy']});
 });

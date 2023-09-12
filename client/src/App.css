@@ -1,8 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .body {
     font-family: Arial;
+    background-color: rgb(207, 155, 155);
     justify-content: center;
+    overflow: hidden;
+}
+
+.header{
     background-color: #5fb35c;
-    color: white;
+    color: gray;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: 5px solid greenyellow;
+    animation: animate 2s linear forwards;
+    animation: animate 2s linear forwards
+}
+
+.center{
+
 }
 
 .headerInfo{
@@ -11,9 +32,7 @@
 }
 
 .groupChoices{
-    background-color: rgb(207, 155, 155);
-    height: 10%;
-    padding: 10px;
+
 }
 
 .randomChoices{
@@ -24,10 +43,44 @@
     margin: 5%;
 }
 
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: rgb(194, 183, 183)
+    }
+
+    .randomChoices{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        justify-content: space-around;
+        margin: 10%;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+
+    .zone{
+        margin-bottom: 5%;
+        padding: 4%;
+    }
+
+    .randomButton{
+        margin-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 .zone{
     align-items: center;
-
 }
+
+.zone1{
+    align-items: center;
+    justify-content: space-around;
+}
+
 .card{
     margin-right: auto;
     margin-left: auto;
@@ -41,15 +94,77 @@
     text-align: center;
 }
 
-.randomBottom{
+.card-ball{
+    border:rgba(129, 124, 124, 0.5);
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.card-ball-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    margin-top: 40px;
+    background-color: white;
+    border-radius: 50%;
+    position:absolute;
+    font-size: 60px;
+}
+
+#card-ball-info-inside{
+    color:black;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.randomButtonBall{
+    margin-top: 5%;
+    top: 65vh;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 30px;
+    text-align: left;
+    border: 0.;
+}
+
+.randomButtonBall:hover{
+    background-color: rgb(207, 155, 155);
+    color:azure;
+    border-color: azure;
+}
+
+
+.randomButtonBall:active{
+    background-color: black;
+    color:azure;
+    border-color: rgb(207, 155, 155);
+}
+
+.randomButton{
     margin-left: 2%;
-    padding-left: 9%;
+    padding-left: 10%;
     padding-right: 10%;
+
+}
+
+.infoCard{
+    text-align: center;
 }
 
 .typeBottom{
     margin-bottom: 2%;
+
 }
 .textInfoType{
-    position:absolute;
+    position: absolute;
+}
+
+.foodoptional{
+    font-size: 14px;
 }

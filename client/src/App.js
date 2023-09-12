@@ -27,13 +27,25 @@ function App(){
     const displayFoods = (foods) => {
       const mealElements = foods.map((food, index) => (
         <div key={index}>
-          <p>Choice: {food.strArea} </p>
-          <p>(optional: {food.strMeal})</p>
-          <p>Category: {food.strCategory}</p>
+          <p>{food.strArea} </p>
+          <p> - {food.strCategory}</p>
+          <p class='foodoptional'>(optional: {food.strMeal})</p>
         </div>
       ));
       setMeals(mealElements);
+      replaceBallInfo();
     };
+
+    function replaceBallInfo(){
+      document.getElementById("card-ball-info-inside").innerHTML= alert(JSON.stringify({meals}));
+      document.getElementById("card-ball-info-inside").style.fonSize = "15px";
+      setTimeout(timeup, 4000);
+
+      function timeup(){
+        document.getElementById("card-ball-info-inside").innerHTML="8";
+      document.getElementById("card-ball-info-inside").style.fonSize = "120px";
+      }
+    }
   
   // Get place
   const showAlertPlace = () =>{
@@ -91,64 +103,69 @@ function App(){
   
   return(
     <div class='body'>
-      <div class='headerInfo'>
-        {typeof backendStart === "string" && backendStart === "" ? (<p>loading..</p>) : (<p> {backendStart} </p>)}
-      </div>
-      <div class='groupChoices'>
-        <div class='randomChoices'>
-          <div class='zone'>
-            <div class='randomBottom'>
-              <button class='typeBottom' onClick={showAlertFood}> Choose a Meal</button>
-            </div>
-            <div class='card'>
-              { meals== null ? <p> Click to chose </p> : <p>{meals}</p>}
-            </div>
+      <div>
+        <div class='header'>
+          <div class='headerInfo'>
+            {typeof backendStart === "string" && backendStart === "" ? (<p>loading..</p>) : (<p> {backendStart} </p>)}
           </div>
 
-          <div class='zone'>
-            <div class='randomBottom'>
-              <button class='typeBottom' onClick={showAlertPlace}> Choose a place</button>
-            </div>       
-            <div class='card'>
-              { place== null ? <p> Click to chose </p> : <p>{place}</p>}
-            </div>
-          </div>
-
-          <div class='zone'>
-            <div class='randomBottom'>
-              <button class='typeBottom' onClick={showAlertActivity}> Choose an activity </button>
-            </div>
-            <div class='card'>
-              { activity == null ? <p> Click to chose </p> : <p>{activity}</p>}
-            </div>
-          </div>
-
-          <div class='zone'>
-            <div class='randomBottom'>
-              <button class='typeBottom' onClick={showAlertType}> Choose type the entertainment </button>
-            </div>
-            <div>
-              <div class='card'>
-                { activity == null ? <p> Click to chose </p> : <p>{styleRandom}</p>}
+        </div>
+        <div class="center">
+          <div class='groupChoices'>
+            <div class='randomChoices'>
+              <div class='zone1'>
+                <div class='card-ball'>
+                  <div class='card-ball-info'>
+                    <p id='card-ball-info-inside'> 8 </p>
+                  </div>
+                </div>
+                <div class='randomButton'>
+                  <button class='randomButtonBall' onClick={showAlertFood}> Choose a Meal</button>
+                </div>
               </div>
-              <p class='textInfoType'>{ activity === 'Cinema'||activity === 'Movie' || activity === 'Theater' ? <p> Only now you can choose the type of entertainment: </p> : <p></p>}</p>
 
+              <div class='zone'>
+                <div class='card'>
+                  { place== null ? <p> </p> : <p class='infoCard'>{place}</p>}
+                </div>
+                <div class='randomButton'>
+                  <button class='typeBottom' onClick={showAlertPlace}> Choose a place</button>
+                </div>       
+              </div>
+
+              <div class='zone'>
+                <div class='card'>
+                  { activity == null ? <p>  </p> : <p class='infoCard'>{activity}</p>}
+                </div>
+                <div class='randomButton'>
+                  <button class='typeBottom' onClick={showAlertActivity}> Choose an activity </button>
+                </div>
+              </div>
+
+              <div class='zone'>
+                <div class='card'>
+                  { sexyTime== null ? <p> </p> : <p class='infoCard'>{sexyTime}</p>}
+                </div>
+                <div class='randomButton'>
+                  <button class='typeBottom' onClick={showAlertSexyTime}> Choose the kind of sexy</button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class='zone'>
-            <div class='randomBottom'>
-              <div class='randomBottom'>
-            </div>
-              <button class='typeBottom' onClick={showAlertSexyTime}> Choose the kind of sexy</button>
-            </div>
-            <div class='card'>
-              { sexyTime== null ? <p> Click to chose </p> : <p>{sexyTime}</p>}
-            </div>
+        </div>
+      </div>
+      <div>
+        <div class='zone1'>
+          <div class='card'>
+            { showAlertActivity == null ? <p> </p> : <p class='infoCard'>{styleRandom}</p>}
+          </div>
+          <p class='textInfoType'>{ activity === 'Cinema'||activity === 'Movie' || activity === 'Theater' ? <p> Only now you can choose the type of entertainment: </p> : <p></p>}</p>
+          <div class='randomButton'>
+            <button class='typeBottom' onClick={showAlertType}> Choose type the entertainment </button>
           </div>
         </div>
       </div>
-
     </div>
     )
 }
