@@ -27,7 +27,7 @@ app.get('/isAlive', (req, res) => {
 
 // GET Where
 app.get('/place', (req, res) => {
-  res.json({'places':['AtHome','In restaurante','In Car','Somewhere','In Sofa','In the street','In park']});
+  res.json({'places':['At Home(UBER)','At restaurante','In Car','Somewhere','In Sofa','At Home(on him)','On the street','In a park', 'On the beach','At Home(on her)']});
 });
 
 // GET What to do

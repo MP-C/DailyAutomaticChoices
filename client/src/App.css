@@ -7,17 +7,18 @@
 
 .body {
     font-family: Arial;
-    background-color: rgb(207, 155, 155);
+    background-color: rgb(105, 103, 96);
+
     justify-content: center;
     overflow: hidden;
 }
 
 .header{
     background-color: #5fb35c;
-    color: gray;
+    color: greenyellow;;
     white-space: nowrap;
     overflow: hidden;
-    border-bottom: 5px solid greenyellow;
+    border-bottom: 5px solid #5fb35c;
     animation: animate 2s linear forwards;
     animation: animate 2s linear forwards
 }
@@ -39,8 +40,9 @@
     display: flex;
     flex-direction: row;
     align-items: baseline;
-    justify-content: space-around;
+    justify-content: space-between;
     margin: 5%;
+    padding:10%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -54,14 +56,19 @@
         align-items: center;
         justify-content: center;
         justify-content: space-around;
-        margin: 10%;
         margin-left: 10%;
         margin-top: 5%;
+
     }
 
     .zone{
         margin-bottom: 5%;
         padding: 4%;
+        padding-bottom: 15%;
+    }
+
+    .zone1{
+        padding-bottom: 15%;
     }
 
     .randomButton{
@@ -102,6 +109,8 @@
     border-radius: 50%;
     display: flex;
     justify-content: center;
+    margin-bottom: 5px;
+
 }
 
 .card-ball-info{
@@ -131,19 +140,20 @@
     border-radius: 30px;
     text-align: left;
     border: 0.;
+    justify-content: center;
+    align-items: center;
 }
 
 .randomButtonBall:hover{
-    background-color: rgb(207, 155, 155);
+    background-color: rgb(133, 127, 127);
     color:azure;
     border-color: azure;
 }
 
-
 .randomButtonBall:active{
     background-color: black;
     color:azure;
-    border-color: rgb(207, 155, 155);
+    border-color: rgb(133, 127, 127);
 }
 
 .randomButton{
@@ -167,4 +177,78 @@
 
 .foodoptional{
     font-size: 14px;
+}
+
+
+.zone2{
+    width: 200px;
+    margin:0;
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.card-lamp{
+    border: 1px solid rgb(44, 43, 41);
+    width: 140px;
+    height: 160px;
+    background-color:  rgb(105, 103, 96);
+    border-radius: 50%; 
+    margin: auto;
+    transition: box-shadow 1.2s, background-color 1.2s;
+    margin-bottom: -4px;
+}
+
+.card-lamp-on{
+    background-color: rgba(233, 179, 80, 0.932);
+    box-shadow: 0 0 20px #fff, 0 0 30px rgb(233, 179, 80, 0.932), 0 0 40px rgba(228, 174, 75, 0.932),
+                0 0 50px #fff, 0 0 60px rgba(216, 158, 50, 0.932), 0 0 70px rgba(218, 155, 40, 0.932),
+                0 0 80px #fff, 0 0 90px #fff, 0 0 100pc #fff;
+}
+
+.card-lamp-info{
+    width: 35px;
+    height: 30px;
+    background-color: rgb(58, 58, 55);
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.light{
+    width: 2px;
+    height: 35px;
+    background-color: black;
+    margin: auto;
+    margin-top: -35px;
+    margin-bottom: -4px;
+    
+}
+
+.card-lamp-info-inside{
+    font-size: 15px;
+    position: absolute;
+    margin-top: -95px;
+    margin-left: -35px;
+    align-items: center;
+    justify-content: center;
+}
+
+.randomButtonLamp{
+    margin-top: 5%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 30px;
+    text-align: left;
+    border: 0.;
+    margin-left: 10px;
+}
+
+.randomButtonLamp:hover{
+    background-color: black;
+    color:rgb(185, 130, 26);
+    border-color: rgb(185, 130, 26);
+}
+.randomButtonLamp:active{
+    background-color: rgb(185, 130, 26);
+    color: azure;
+    border-color: azure;
 }

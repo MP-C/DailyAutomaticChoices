@@ -27,37 +27,49 @@ function App(){
     const displayFoods = (foods) => {
       const mealElements = foods.map((food, index) => (
         <div key={index}>
-          <p>{food.strArea} </p>
-          <p> - {food.strCategory}</p>
-          <p class='foodoptional'>(optional: {food.strMeal})</p>
+          <a href= {food.strMealThumb}>
+            <p>{food.strArea} </p>
+            <p> - {food.strCategory}</p>
+            <p className='foodoptional'>(optional: {food.strMeal})</p>
+          </a>
         </div>
       ));
       setMeals(mealElements);
-      replaceBallInfo();
-    };
 
-    function replaceBallInfo(){
-      document.getElementById("card-ball-info-inside").innerHTML= alert(JSON.stringify({meals}));
-      document.getElementById("card-ball-info-inside").style.fonSize = "15px";
-      setTimeout(timeup, 4000);
+        setTimeout(timeup, 4000);
 
       function timeup(){
+        document.getElementById("card-ball-info-inside").style.fonSize = "120px";
         document.getElementById("card-ball-info-inside").innerHTML="8";
-      document.getElementById("card-ball-info-inside").style.fonSize = "120px";
       }
-    }
+    };
   
   // Get place
   const showAlertPlace = () =>{
-      fetch("/place")
-        .then(response => response.json())
-        .then(data => displayPlace(data.places)); // Use data.places here
-    };
-    
-    const displayPlace = (places) => {
-      var placeRandom = getRandomItem(places);
-      setPlace(placeRandom);
-    };
+    fetch("/place")
+      .then(response => response.json())
+      .then(data => displayPlace(data.places)); // Use data.places here
+  };
+  
+  const displayPlace = (places) => {
+    var placeRandom = getRandomItem(places);
+    setPlace(placeRandom);
+    power();
+  };
+
+  function power(){
+    let light = document.querySelector('.card-lamp');
+    let lightInfo = document.querySelector('.card-lamp-info-inside');
+      if(light.classList.contains('card-lamp-on')){
+        light.classList.remove('card-lamp-on');
+        lightInfo.style.color="rgb(105, 103, 96,0)"; 
+      }
+      else{
+        light.classList.add('card-lamp-on');
+        lightInfo.style.color="black";
+      }
+  }
+
 
   // Get activity
   const showAlertActivity = () => {
@@ -102,52 +114,57 @@ function App(){
     }
   
   return(
-    <div class='body'>
+    <div className='body'>
       <div>
-        <div class='header'>
-          <div class='headerInfo'>
+        <div className='header'>
+          <div className='headerInfo'>
             {typeof backendStart === "string" && backendStart === "" ? (<p>loading..</p>) : (<p> {backendStart} </p>)}
           </div>
 
         </div>
-        <div class="center">
-          <div class='groupChoices'>
-            <div class='randomChoices'>
-              <div class='zone1'>
-                <div class='card-ball'>
-                  <div class='card-ball-info'>
+        <div className="center">
+          <div className='groupChoices'>
+            <div className='randomChoices'>
+              
+              <div className='zone1'>
+                <div className='card-ball'>
+                  <div className='card-ball-info'>
                     <p id='card-ball-info-inside'> 8 </p>
+                    { meals== null ? <p> </p> : <p >{meals}</p>}
                   </div>
                 </div>
-                <div class='randomButton'>
-                  <button class='randomButtonBall' onClick={showAlertFood}> Choose a Meal</button>
+                <div className='randomButton'>
+                  <button className='randomButtonBall' onClick={showAlertFood}> Choose a Meal</button>
                 </div>
               </div>
 
-              <div class='zone'>
-                <div class='card'>
-                  { place== null ? <p> </p> : <p class='infoCard'>{place}</p>}
+              <div className='zone2'>
+                <div className='card-lamp'></div>
+                <div className='light'></div>
+                <div className='card-lamp-info'>
+                  { place== null ? <p> </p> : <p className='card-lamp-info-inside'>{place}</p>}
                 </div>
-                <div class='randomButton'>
-                  <button class='typeBottom' onClick={showAlertPlace}> Choose a place</button>
+
+                <div className='randomButton'>
+                  <button className='randomButtonLamp' onClick={showAlertPlace}> Choose a place</button>
                 </div>       
               </div>
 
-              <div class='zone'>
-                <div class='card'>
-                  { activity == null ? <p>  </p> : <p class='infoCard'>{activity}</p>}
+              <div className='zone'>
+                <div className='card'>
+                  { activity == null ? <p>  </p> : <p className='infoCard'>{activity}</p>}
                 </div>
-                <div class='randomButton'>
-                  <button class='typeBottom' onClick={showAlertActivity}> Choose an activity </button>
+                <div className='randomButton'>
+                  <button className='typeBottom' onClick={showAlertActivity}> Choose an activity </button>
                 </div>
               </div>
 
-              <div class='zone'>
-                <div class='card'>
-                  { sexyTime== null ? <p> </p> : <p class='infoCard'>{sexyTime}</p>}
+              <div className='zone'>
+                <div className='card'>
+                  { sexyTime== null ? <p> </p> : <p className='infoCard'>{sexyTime}</p>}
                 </div>
-                <div class='randomButton'>
-                  <button class='typeBottom' onClick={showAlertSexyTime}> Choose the kind of sexy</button>
+                <div className='randomButton'>
+                  <button className='typeBottom' onClick={showAlertSexyTime}> Choose the kind of sexy</button>
                 </div>
               </div>
             </div>
@@ -156,13 +173,13 @@ function App(){
         </div>
       </div>
       <div>
-        <div class='zone1'>
-          <div class='card'>
-            { showAlertActivity == null ? <p> </p> : <p class='infoCard'>{styleRandom}</p>}
+        <div className='zone1'>
+          <div className='card'>
+            { showAlertActivity == null ? <p> </p> : <p className='infoCard'>{styleRandom}</p>}
           </div>
-          <p class='textInfoType'>{ activity === 'Cinema'||activity === 'Movie' || activity === 'Theater' ? <p> Only now you can choose the type of entertainment: </p> : <p></p>}</p>
-          <div class='randomButton'>
-            <button class='typeBottom' onClick={showAlertType}> Choose type the entertainment </button>
+          <p className='textInfoType'>{ activity === 'Cinema'||activity === 'Movie' || activity === 'Theater' ? <p> Only now you can choose the type of entertainment: </p> : <p></p>}</p>
+          <div className='randomButton'>
+            <button className='typeBottom' onClick={showAlertType}> Choose type the entertainment </button>
           </div>
         </div>
       </div>
