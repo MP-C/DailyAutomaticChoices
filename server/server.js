@@ -5,24 +5,25 @@ const port = process.env.PORT || 5000;
 // This displays a message that the server is running and listening on the specified port
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+// GET Global API Results On serveless netlify
+app.get('/isAlive', (req, res) => {
+  res.json({ isAlive: "true"});
+});
+
+
 // Create a GET route
 app.get('/express_backend', (req, res) => {
   res.send({ express: 'You are CONNECTED!' });
 });
 
-  // Get Meals Random Auto Choice
+// Get Meals Random Auto Choice
 app.get('/getRandomMeal', (req, res) => {
   res.send('https://www.themealdb.com/api/json/v1/1/random.php');
 });
 
 // Get Cocktail Random Auto Choice
-app.get('/getRandomMeal', (req, res) => {
+app.get('/getRandomCocktail', (req, res) => {
   res.send('https://www.thecocktaildb.com/api/json/v1/1/random.php');
-});
-
-// GET Global API Results On serveless netlify
-app.get('/isAlive', (req, res) => {
-  res.json({ isAlive: "true"});
 });
 
 // GET Where
