@@ -130,6 +130,7 @@
     color:black;
     border-radius: 50%;
     text-align: center;
+    z-index: 0;
 }
 
 .randomButtonBall{
@@ -155,6 +156,11 @@
     color:azure;
     border-color: rgb(133, 127, 127);
 }
+.randomButtonBall:active #card-ball-info-inside{
+    position: relative;
+    bottom: 20px;
+    z-index: -1;
+}
 
 .randomButton{
     margin-left: 2%;
@@ -175,8 +181,16 @@
     position: absolute;
 }
 
-.foodoptional{
+.mealTitle{
     font-size: 14px;
+}
+
+.mealCategory{
+    font-size: 10px;
+}
+
+.mealOptional{
+    font-size: 12px;
 }
 
 
@@ -251,4 +265,77 @@
     background-color: rgb(185, 130, 26);
     color: azure;
     border-color: azure;
+}
+
+
+.cocktail{
+}
+
+.cocktail-glass{
+    width: 150px;
+    height: 200px;
+    background-color: rgba(238, 241, 198, 0.829);
+    backdrop-filter: blur(14px); 
+    -webkit-clip-path: polygon(0% 0%, 49% 75%, 45% 95%, 10% 100%, 90% 100%, 55% 95%, 51% 75%, 100% 0%);
+    clip-path: polygon(0% 0%, 49% 75%, 45% 95%, 10% 100%, 90% 100%, 55% 95%, 51% 75%, 100% 0%);
+}
+
+.cocktail-glass-object{
+    top:-5;
+    width: 140px;
+    height: 180px;
+    overflow: hidden;
+    background-color: rgb(238, 241, 198);
+    backdrop-filter: blur(14px); 
+    -webkit-clip-path: polygon(0% 0%, 49% 75%, 45% 95%, 10% 100%, 90% 100%, 55% 95%, 51% 75%, 100% 0%);
+    clip-path: polygon(0% 0%, 49% 75%, 45% 95%, 10% 100%, 90% 100%, 55% 95%, 51% 75%, 100% 0%);
+    position: relative;
+}
+
+.cocktail-content{
+    margin-left: px;
+    width: 140px;
+    height: 150px;
+    background-color: #80c5de;
+    background-repeat: no-repeat;
+    border-radius: 0 0 40px 40px;
+    box-shadow: inset 0 0 70px #1c637c;
+    position: relative;
+    animation: wave 12s;
+    animation-fill-mode: forwards;
+    z-index: 1;
+}
+@keyframes wave{
+    0%{ right: 100; top: 200px;}
+    100%{ right: 3400; top: 30px;}
+}
+
+.randomButtonCocktail{
+    margin-top: 5%;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 30px;
+    text-align: left;
+    border: 0.;
+    margin-left: 10px;
+}
+
+.randomButtonCocktail:hover{
+    background-color: #80c5de;
+    color:azure;
+    border-color: rgb(20, 20, 19);
+}
+.randomButtonCocktail:active{
+    box-shadow: inset 0 0 70px #1c637c;
+    color: azure;
+    border-color: azure;
+}
+
+.card-cocktail-info{
+    position: absolute;
+    justify-content: center;
+    margin-left: 20px;
+    font-size: 14px;
+    z-index: 1;
+
 }
