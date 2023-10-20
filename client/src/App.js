@@ -53,15 +53,27 @@ function App(){
   };
   
   
-    // Get a Cocktail
+  function changeElement() {
+    const liquidElement = document.getElementById('liquid');
+    if (liquidElement && liquidElement.className === 'cocktail-content') {
+      liquidElement.className = 'cocktail-content-empty';
+    } else if (liquidElement && liquidElement.className === 'cocktail-content-empty') {
+      liquidElement.className = 'cocktail-content';
+    }
+  }
+  
+   
+  // Get a Cocktail
     const showCocktail = () => {
       //fetch("/randomCocktail")
       fetch("https://www.thecocktaildb.com/api/json/v1/1/random.php")
         .then(response => response.json())
         .then(data => displayCocktail(data)); // link to cocktail here
-        
+        changeElement();
     };
-  
+
+
+
     const displayCocktail = (data) => {
       const cocktails = data.drinks[0]; // Access the first drink object
       const cocktailElement = (
@@ -168,14 +180,10 @@ function App(){
                   { cocktails == null ? <p> </p> : <p >{cocktails}</p>}
                 </div>
                 <div className='cocktail-glass'>
-                { cocktails == null ? 
-                  <div className='cocktail-glass-object'> </div> : 
-                  <div className='cocktail-glass-object'>
-                    <div className='cocktail-content'></div>
+                  <div className='cocktail-glass-object'> 
+                    <div id='liquid' className='cocktail-content-empty'></div>
                   </div>
-                }
                 </div>
-                
                 <div className='randomButton'>
                   <button className='randomButtonCocktail' onClick={showCocktail}> Choose a Cocktail</button>
                 </div>       
