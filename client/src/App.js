@@ -24,23 +24,24 @@ function App(){
       .then(res => res.json())
       .then(data => displayFoods(data.meals))
     }
-    
+    var seconds = 4000;
     const displayFoods = (foods) => {
       const mealElements = foods.map((food, index) => (
-        <div key={index}>
-          <a href src= {food.strMealThumb}>
-            <p className='mealTitle'>{food.strArea} </p>
-            <p className='mealCategory'> - {food.strCategory}</p>
-            <p className='mealOptional'>(optional: {food.strMeal})</p>
+        <div key={index} className='card-ball-newinfo'>
+          <a href={food.strMealThumb}>
+            <p className='mealTitle'>{food.strMeal}</p>
           </a>
+            <p className='mealCategory'>({food.strCategory})</p>
         </div>
       ));
       setMeals(mealElements);
-
-      setTimeout(timeup, 4000);
+      
+      // Make the number 8 disappear
+      document.getElementById("card-ball-info-inside").innerHTML = "";
+      setTimeout(timeup, seconds);
 
       function timeup(){
-        document.getElementById("card-ball-info-inside").style.fonSize = "120px";
+        setMeals();
         document.getElementById("card-ball-info-inside").innerHTML="8";
       }
     };
@@ -51,8 +52,7 @@ function App(){
       .then(response => response.json())
       .then(data => displayPlace(data.places)); // Use data.places here
   };
-  
-  
+    
   function changeElement() {
     const liquidElement = document.getElementById('liquid');
     if (liquidElement && liquidElement.className === 'cocktail-content') {
@@ -167,7 +167,7 @@ function App(){
                 <div className='card-ball'>
                   <div className='card-ball-info'>
                     <p id='card-ball-info-inside'> 8 </p>
-                    { meals== null ? <p> </p> : <p >{meals}</p>}
+                    { meals == null ? <p> </p> : <p >{meals}</p>}
                   </div>
                 </div>
                 <div className='randomButton'>
@@ -218,10 +218,10 @@ function App(){
                 </div>
               </div>
               <div className='zone1'>
+                <p className='textInfoType'>{ activity === 'Cinema'||activity === 'Movie' || activity === 'Theater' ? <p> Only now you can choose the type of entertainment: </p> : <p></p>}</p>
                 <div className='card'>
                   { showAlertActivity == null ? <p> </p> : <p className='infoCard'>{styleRandom}</p>}
                 </div>
-                <p className='textInfoType'>{ activity === 'Cinema'||activity === 'Movie' || activity === 'Theater' ? <p> Only now you can choose the type of entertainment: </p> : <p></p>}</p>
                 <div className='randomButton'>
                   <button className='typeBottom' onClick={showAlertType}> Choose type the entertainment </button>
                 </div>
